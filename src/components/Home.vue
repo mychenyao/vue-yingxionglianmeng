@@ -13,9 +13,9 @@
       <div ref="mycolor" class="district">
           {{active}}
           <p class="triangle" @click="get_list"></p>
-        <ul v-show="isShow" class="district_list">
-          <li  v-for="(item,index) in datalist" @click="select(index)">{{item}}</li>
-        </ul>
+            <ul class="district_list" v-if="isShow">
+              <li  v-for="(item,index) in datalist" @click="select(index)">{{item}}</li>
+            </ul>
      </div>
       <div class="game_pattern">
           <a href="javascript:;" v-for="(item,index) in gamelist" @click="selects(index)" v-html="item"
@@ -33,7 +33,7 @@
 <script>
 import login from "./login/login";
 import { Toast } from 'mint-ui';
-import { setItem,getItem } from "../seetion/sesstion";
+import { setCookie,getCookie} from "../cookie/cookie";
 export default {
   components:{
     login
@@ -81,6 +81,7 @@ export default {
     }
   },
   methods: {
+
     active1(){
         this.$refs.myactive1.style.background=this.color;
         this.$refs.myactive2.style.background="";
@@ -120,7 +121,7 @@ export default {
          if(this.partition||this.partition=="0"){
            if(this.model || this.model=="0"){
                 //判断用户是否登陆
-                if(getItem()){
+                if(getCookie()!=null){
                   this.$router.push({path: '/startgame'});
                 }else{
                     this.islogin=true;
@@ -196,18 +197,20 @@ export default {
     border-color: #c0c0c0 transparent  transparent transparent ;
   }
  .district_list{
+    list-style: none;
+    padding:0;
+    margin:0;
+    color:black;
+    height:188px;
+    overflow: auto;
     width:100%;
     position: absolute;
     top:30px;
     left:0px;
-    list-style: none;
-    overflow: auto;
-    padding:0;
-    margin:0;
-    color:black;
+    border-radius:8px;
     background:#fff;
-    height:200px;
   }
+  .district_list::-webkit-scrollbar {display:none}
   .district_list > li{
     padding:3px 6px;
     text-align:left;

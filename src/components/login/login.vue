@@ -18,7 +18,7 @@
 </template>
 <script>
 import { Toast } from 'mint-ui';
-import { setItem,getItem } from "../../seetion/sesstion";
+import { setCookie,getCookie} from "../../cookie/cookie";
 export default {
   data () {
     return {
@@ -38,7 +38,7 @@ export default {
     },
     start(){
       if(this.user && this.password){
-           setItem(this.user);
+           setCookie(this.user,this.password);
            this.$router.push({path: '/startgame'});
       }else{
           Toast("请输入账号和密码");
@@ -52,7 +52,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
  .login{
     width:100%;

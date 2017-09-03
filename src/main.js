@@ -9,7 +9,15 @@ import mintui from 'mint-ui';
 // 在Vue中全局使用mintui
 Vue.use(mintui);
 Vue.config.productionTip = false
-
+// import VIscroll from 'viscroll';
+// Vue.use(VIscroll, {
+//     mouseWheel: true,
+//     click: true,
+//     preventDefault: true,
+//     tap: false,
+//     bounce: false,
+//     disableTouch: true
+// });
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
